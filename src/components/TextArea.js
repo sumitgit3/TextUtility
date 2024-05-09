@@ -34,7 +34,15 @@ export default function TextArea(props) {
       setText(a);
       props.showAlert("Word Replaced!",'info');
     }
-    
+    const noOfWords = ()=>{
+      let count = 0;
+      const words = text.split(" ");
+      count = words.reduce((acc,curr)=>{
+          if(curr !== ' ' && curr !== '') acc =acc+1;
+          return acc;
+      },0);
+      return count;
+    }
 
 
    
@@ -49,7 +57,7 @@ export default function TextArea(props) {
            <button className="btn btn-primary mx-2" onClick={clearText} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}>Clear Text</button>
            <div className="input-group ">
             <div className="input-group-prepend ">
-              <span className="input-group-text" id="" style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{backgroundColor:'#0D6EFD',color:'white'}}>Word  and Replace</span>
+              <span className="input-group-text " id="" style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{backgroundColor:'#0D6EFD',color:'white'}}>Word  and Replace</span>
             </div>
             <input type="text" className="form-control " value={word} onChange={handleWordOnChange} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}/>
             <input type="text" className="form-control" value={replace} onChange={handleReplaceOnChange} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}} />
@@ -60,7 +68,7 @@ export default function TextArea(props) {
       </div>
       <div className="container">
         <h3 style={props.mode==='dark'?{color:'green'}:{color:'black'}}>Text Summary:</h3>
-        <p style={props.mode==='dark'?{color:'green'}:{color:'black'}}>{text.split(" ").length} words and {text.length} characters</p>
+        <p style={props.mode==='dark'?{color:'green'}:{color:'black'}}>{noOfWords()} words and {text.length} characters</p>
         <h3 style={props.mode==='dark'?{color:'green'}:{color:'black'}}>Preview :</h3>
         <p style={props.mode==='dark'?{color:'green'}:{color:'black'}}>{text}</p>
       </div>
