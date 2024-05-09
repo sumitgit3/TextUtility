@@ -9,6 +9,7 @@ export default function TextArea(props) {
     }
     const handleWordOnChange = (event)=> {
       setWord(event.target.value);
+      
     }
     const handleReplaceOnChange = (event)=> {
       setReplace(event.target.value);
@@ -16,18 +17,22 @@ export default function TextArea(props) {
     const toUpperCase = ()=> {
         let a = text.toUpperCase();
         setText(a);
+        props.showAlert("Converted to Uppercase",'info');
     }
     const toLowerCase = ()=> {
       let a = text.toLowerCase();
       setText(a);
+      props.showAlert("Converted to LowerCase",'info');
     }
     const clearText = ()=> {
       let a ="";
       setText(a);
+      props.showAlert("Text cleared",'info');
     }
     const findReplace = ()=> {
       let a =text.replaceAll(word,replace);
       setText(a);
+      props.showAlert("Word Replaced!",'info');
     }
     
 
@@ -44,7 +49,7 @@ export default function TextArea(props) {
            <button className="btn btn-primary mx-2" onClick={clearText} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}>Clear Text</button>
            <div className="input-group ">
             <div className="input-group-prepend ">
-              <span className="input-group-text" id="" style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{backgroundColor:'#0D6EFD',color:'white'}}>Word k and Replace</span>
+              <span className="input-group-text" id="" style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{backgroundColor:'#0D6EFD',color:'white'}}>Word  and Replace</span>
             </div>
             <input type="text" className="form-control " value={word} onChange={handleWordOnChange} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}/>
             <input type="text" className="form-control" value={replace} onChange={handleReplaceOnChange} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}} />
