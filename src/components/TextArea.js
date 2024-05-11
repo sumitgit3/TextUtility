@@ -52,9 +52,9 @@ export default function TextArea(props) {
         <h1 style={props.mode==='dark'?{color:'green'}:{color:'black'}}>{props.heading}</h1>
       <div className="mb-3">
            <textarea className="form-control" value={text} onChange={handleOnChange}  rows="8" style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{backgroundColor:'white',color:'black'}}></textarea>
-           <button className="btn btn-primary my-2" onClick={toUpperCase} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}>Convert to UpperCase</button>
-           <button className="btn btn-primary mx-2" onClick={toLowerCase} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}>Convert to LowerCase</button>
-           <button className="btn btn-primary mx-2" onClick={clearText} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}>Clear Text</button>
+           <button disabled={text.length===0} className="btn btn-primary my-2" onClick={toUpperCase} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}>Convert to UpperCase</button>
+           <button disabled={text.length===0} className="btn btn-primary mx-2" onClick={toLowerCase} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}>Convert to LowerCase</button>
+           <button  disabled={text.length===0} className="btn btn-primary mx-2" onClick={clearText} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}>Clear Text</button>
            <div className="input-group ">
             <div className="input-group-prepend ">
               <span className="input-group-text " id="" style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{backgroundColor:'#0D6EFD',color:'white'}}>Word  and Replace</span>
@@ -63,14 +63,14 @@ export default function TextArea(props) {
             <input type="text" className="form-control" value={replace} onChange={handleReplaceOnChange} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}} />
           
           </div>
-          <button className="btn btn-primary my-2" onClick={findReplace} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}>Find and Replace</button>
+          <button disabled={text.length===0} className="btn btn-primary my-2" onClick={findReplace} style={props.mode==='dark'?{backgroundColor:'black',color:'green'}:{}}>Find and Replace</button>
           
       </div>
       <div className="container">
         <h3 style={props.mode==='dark'?{color:'green'}:{color:'black'}}>Text Summary:</h3>
         <p style={props.mode==='dark'?{color:'green'}:{color:'black'}}>{noOfWords()} words and {text.length} characters</p>
         <h3 style={props.mode==='dark'?{color:'green'}:{color:'black'}}>Preview :</h3>
-        <p style={props.mode==='dark'?{color:'green'}:{color:'black'}}>{text}</p>
+        <p style={props.mode==='dark'?{color:'green'}:{color:'black'}}>{text.length===0?'Nothing to Preview':text}</p>
       </div>
     </div>
     </>
