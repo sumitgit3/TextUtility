@@ -40,7 +40,7 @@ function App() {
         <Alert alert={alert} />
         <Routes>
           <Route  path='/' element={<TextArea heading="Enter your text here" mode={theme} showAlert={showAlert} />} />
-          <Route  path='/about' element={<About />} />
+          <Route  path='/about' element={<About mode={theme} />} />
         </Routes>
 
       </BrowserRouter>
