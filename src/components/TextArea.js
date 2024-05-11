@@ -38,7 +38,7 @@ export default function TextArea(props) {
       let count = 0;
       const words = text.split(" ");
       count = words.reduce((acc,curr)=>{
-          if(curr !== ' ' && curr !== '') acc =acc+1;
+          if(curr !== '') acc =acc+1;
           return acc;
       },0);
       return count;
