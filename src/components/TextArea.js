@@ -36,7 +36,8 @@ export default function TextArea(props) {
     }
     const noOfWords = ()=>{
       let count = 0;
-      const words = text.split(" ");
+      let words = text.split(/\s+/);
+    
       count = words.reduce((acc,curr)=>{
           if(curr !== '') acc =acc+1;
           return acc;
